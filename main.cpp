@@ -4,7 +4,12 @@
 #include "Grid.h"
 #include "Sphere.h"
 #include "Camera.h"
-#include <imgui.h>
+
+#ifdef _DEBUG
+	#include <imgui.h>
+#endif // _DEBUG
+
+
 
 const char kWindowTitle[] = "イシカワタケシ_MT3_01_02";
 

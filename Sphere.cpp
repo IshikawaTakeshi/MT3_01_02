@@ -2,7 +2,11 @@
 #include "MyMath/MatrixMath.h"
 #include "MyMath/MyMath.h"
 #include "Novice.h"
+
+
+#ifdef _DEBUG
 #include <imgui.h>
+#endif // _DEBUG
 
 Sphere::Sphere() {
 	centerPos_ = { 0.0f,0.0f,0.0f };
@@ -16,10 +20,12 @@ Sphere::~Sphere() {
 void Sphere::Update() {
 	worldMatrix_ = MatrixMath::MakeAffineMatrix({ 1.0f,1.0f,1.0f }, { 0.0f,0.0f,0.0f }, centerPos_);
 
+#ifdef _DEBUG
 	ImGui::Begin("Window::Sphere");
 	ImGui::DragFloat3("SphereTranslate", &centerPos_.x, 0.01f);
 	ImGui::DragFloat("SphereRadius", &radius_, 0.01f);
 	ImGui::End();
+#endif // _DEBUG
 }
 
 void Sphere::Draw(const Matrix4x4& viewProjectionMatrix, const Matrix4x4& viewportMatrix, uint32_t color) {
